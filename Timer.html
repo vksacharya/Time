@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Stop Time Tracker</title>
+</head>
+<body>
+    <h1>Employee Stop Time Tracker</h1>
+
+    <!-- Start Time -->
+    <label for="startTime">Start Time:</label>
+    <input type="time" id="startTime">
+    <br>
+
+    <!-- Employee Name -->
+    <label for="employeeName">Employee Name:</label>
+    <input type="text" id="employeeName">
+    <br>
+
+    <!-- Stop Time -->
+    <label for="stopTime">Stop Time:</label>
+    <input type="time" id="stopTime">
+    <br>
+
+    <!-- Submit Button -->
+    <button onclick="calculateHours()">Submit</button>
+    
+    <!-- Display Total Hours -->
+    <p>Total Hours Worked: <span id="totalHours">0</span></p>
+
+    <script>
+        function calculateHours() {
+            // Get the start time and stop time from the input fields
+            var startTime = document.getElementById("startTime").valueAsNumber;
+            var stopTime = document.getElementById("stopTime").valueAsNumber;
+
+            // Calculate the time difference in milliseconds
+            var timeDifference = stopTime - startTime;
+
+            // Calculate hours and minutes
+            var hours = Math.floor(timeDifference / (1000 * 60 * 60));
+            var minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+
+            // Display the total hours worked
+            var totalHours = document.getElementById("totalHours");
+            totalHours.textContent = hours + " hours " + minutes + " minutes";
+        }
+    </script>
+</body>
+</html>
